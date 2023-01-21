@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <h1 style="color: aliceblue;"><a style="text-decoration: none; color: white;" routerLink="">This is my test aplication</a></h1>
+    </div>
+</nav>
+<div class="px-4 py-5 my-5 text-center">
+    <div class="card-body">
+        <h5 class="card-title"><strong>Show Users</strong></h5>
+        <table class="table table-striped table-no-bordered table-hover" cellspacing="0"
+            width="100%">
+            <thead class="text-warn">
+                <th>User Id</th>
+                <th>User Login</th>
+                <th>Profile URL</th>
+                <th>Creation Date</th>
+            </thead>
+            <tbody *ngIf="details">
+                <tr>
+                    <td>
+                        {{details.id}}
+                    </td>
+                    <td>
+                        {{details.login}}
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)" (click)="getRepos(details.login)">
+                            {{details.html_url}}>
+                        </a>
+                    </td>
+                    <td>
+                        {{details.updated_at}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <ng-container *ngIf="show">
+        <table class="table table-striped table-no-bordered table-hover" cellspacing="0"
+            width="100%">
+            <thead class="text-warn">
+                <th>Repository Id</th>
+                <th>Repository Name</th>
+                <th>Repository URL</th>
+            </thead>
+            <tbody *ngIf="repos">
+                <tr *ngFor="let repo of repos">
+                    <td>
+                        {{repo.id}}
+                    </td>
+                    <td>
+                        {{repo.name}}
+                    </td>
+                    <td>
+                        {{repo.url}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+
+</div>

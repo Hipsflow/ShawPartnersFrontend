@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <h1 style="color: aliceblue;"><a style="text-decoration: none; color: white;" routerLink="">This is my test aplication</a></h1>
+    </div>
+</nav>
+<div class="col-md-12">
+    <div class="card text-center">
+        <div class="card-header">
+            Shaw and Partners Test
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><strong>Show Users</strong></h5>
+            <table class="table table-striped table-no-bordered table-hover" cellspacing="0"
+                width="100%">
+                <thead class="text-warn">
+                    <th>User Id</th>
+                    <th>User name</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let user of users | paginate
+                    : { itemsPerPage: tableSize, currentPage: page, totalItems: count};
+                    let i = index">
+                        <td>
+                            {{user.id}}
+                        </td>
+                        <td>
+                            {{user.login}}
+                        </td>
+                        <td>
+                            <button type="button" (click)="showDetails(user.login)" class="btn btn-primary btn-sm px-4 gap-3">Show Details</button>
+                        </td>
+                    </tr>
+                    <div class="d-flex justify-content-center">
+                        <pagination-controls
+                          previousLabel="Prev"
+                          nextLabel="Next"
+                          (pageChange)="onTableDataChange($event)">
+                        </pagination-controls>
+                      </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
